@@ -1060,6 +1060,10 @@ public:
     }
 };
 
+#pragma mark -- class的定义
+// Class 就是结构体 objc_class，而objc_class 是继承于objc_object，说明类也是一个对象，只是比对象多了一些属性，如superclass等。
+// 那么既然类也是一个对象，那么它也会有它自己的isa指针，那么它的isa指针指向哪里呢？
+// 为了解决这个问题，苹果引入了元类（metaClass）的概念
 
 struct objc_class : objc_object {
     // Class ISA;

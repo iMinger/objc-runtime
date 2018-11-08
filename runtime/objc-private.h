@@ -70,7 +70,7 @@ union isa_t
     isa_t() { }
     isa_t(uintptr_t value) : bits(value) { }
 
-    Class cls;
+    Class cls;  //里面存了这个对象的类的相关信息
     uintptr_t bits;
 
 #if SUPPORT_PACKED_ISA
@@ -164,10 +164,10 @@ union isa_t
 
 };
 
-
+#pragma mark -- object 的定义如下
 struct objc_object {
 private:
-    isa_t isa;
+    isa_t isa;   // isa_t 是一个union 联合体
 
 public:
 
