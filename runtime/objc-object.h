@@ -201,7 +201,14 @@ objc_object::initInstanceIsa(Class cls, bool hasCxxDtor)
     initIsa(cls, true, hasCxxDtor);
 }
 
-inline void 
+/**
+ 
+ @param cls 类
+ @param nonpointer 这个是是什么？为什么在这里要传true?  http://www.sealiesoftware.com/blog/archive/2013/09/24/objc_explain_Non-pointer_isa.html   大概的意思是在64位系统中，为了降低内存使用，提升性能，isa中有一部分字段用来存储其他信息。这也解释了上面isa_t的那部分结构体。
+     这有点像taggedPointer，两者之间有什么区别？备注一下后面再研究。
+ @param hasCxxDtor 是否有析构函数
+ */
+inline void
 objc_object::initIsa(Class cls, bool nonpointer, bool hasCxxDtor) 
 { 
     assert(!isTaggedPointer()); 
